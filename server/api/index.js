@@ -5,7 +5,7 @@ const expressLayout = require('express-ejs-layouts');
 const methodOverride = require('method-override');
 const { flash } = require('express-flash-message');
 const session = require('express-session');
-const connectDB = require('./server/config/db');
+const connectDB = require('../config/db');
 
 const app = express();
 const port = 5000 || process.env.PORT;
@@ -42,7 +42,7 @@ app.set('layout', './layouts/main');
 app.set('view engine', 'ejs');
 
 // Routes
-app.use('/', require('./server/routes/customer'))
+app.use('/', require('../routes/customer'))
 
 //Handle 404
 app.get('*', (req, res) => {
