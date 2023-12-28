@@ -34,6 +34,7 @@ app.use(
       store: new MongoStore({ 
       mongooseConnection: require('mongoose').connection,
       collection: 'customers', 
+      })
   })
 );
 
