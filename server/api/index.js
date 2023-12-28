@@ -6,6 +6,7 @@ const methodOverride = require('method-override');
 const { flash } = require('express-flash-message');
 const session = require('express-session');
 const connectDB = require('../config/db');
+const MongoStore = require('connect-mongo')(session); 
 
 const app = express();
 const port = 5000 || process.env.PORT;
@@ -29,7 +30,10 @@ app.use(
     saveUninitialized: true,
     cookie: {
       maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
-    }
+    },
+      store: new MongoStore({ 
+      mongooseConnection: require('mongoose').connection,
+      collection: 'customers', 
   })
 );
 
